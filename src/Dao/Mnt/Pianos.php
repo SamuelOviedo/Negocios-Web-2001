@@ -54,32 +54,33 @@ class Pianos extends Table
         $pianoimguri,
         $pianoimgthb,
         $pianoprice,
-        $pianoest
+        $pianoest,
+        $pianoid
     ) {
-        $sqlstr = "UPDATE `pianos` set
-`invPrdBrCod`=:invPrdBrCod, `invPrdCodInt`=:invPrdCodInt,
-`invPrdDsc`=:invPrdDsc, `invPrdTip`=:invPrdTip, `invPrdEst`=:invPrdEst,
-`invPrdPadre`=:invPrdPadre, `invPrdFactor`=:invPrdFactor, `invPrdVnd`=:invPrdVnd
-where `invPrdId` = :invPrdId;";
-        $sqlParams = array(
-            "invPrdBrCod" => $invPrdBrCod,
-            "invPrdCodInt" => $invPrdCodInt,
-            "invPrdDsc" => $invPrdDsc,
-            "invPrdTip" => $invPrdTip,
-            "invPrdEst" => $invPrdEst,
-            "invPrdPadre" => $invPrdPadre,
-            "invPrdFactor" => $invPrdFactor,
-            "invPrdVnd" => $invPrdVnd,
-            "invPrdId" => $invPrdId
-        );
+        $sqlstr = "UPDATE `nw202202`.`pianos` SET 
+        `pianodsc` = :pianodsc, `pianobio` = :pianobio, 
+        `pianosales` = :pianosales, `pianoimguri` = :pianoimguri, 
+        `pianoimgthb` = :pianoimgthb, `pianoprice` = :pianoprice, 
+        `pianoest` = :pianoest
+        WHERE (`pianoid` = :pianoid);";
+        $sqlParams = [
+            "pianodsc" => $pianodsc ,
+            "pianobio" => $pianobio ,
+            "pianosales" => $pianosales ,
+            "pianoimguri" => $pianoimguri ,
+            "pianoimgthb" => $pianoimgthb ,
+            "pianoprice" => $pianoprice ,
+            "pianoest" =>  $pianoest,
+            "pianoid" => $pianoid
+        ];
         return self::executeNonQuery($sqlstr, $sqlParams);
     }
 
-    public static function delete($invPrdId)
+    public static function delete($pianoid)
     {
-        $sqlstr = "DELETE from `productos` where invPrdId = :invPrdId;";
+        $sqlstr = "DELETE from `pianos` where pianoid = :pianoid;";
         $sqlParams = array(
-            "invPrdId" => $invPrdId
+            "pianoid" => $pianoid
         );
         return self::executeNonQuery($sqlstr, $sqlParams);
     }

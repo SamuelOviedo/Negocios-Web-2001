@@ -141,10 +141,10 @@ class Piano extends PublicController
                 $result = Pianos::insert(
                     $this->viewData["pianodsc"],
                     $this->viewData["pianobio"],
-                    $this->viewData["pianosales"],
+                    intval($this->viewData["pianosales"]),
                     $this->viewData["pianoimguri"],
                     $this->viewData["pianoimgthb"],
-                    $this->viewData["pianoprice"],
+                    floatval($this->viewData["pianoprice"]),
                     $this->viewData["pianoest"]
                 );
                 if ($result) {
@@ -155,37 +155,74 @@ class Piano extends PublicController
                 }
                 break;
             case 'UPD':
-                $result = Productos::update(
-                    $this->viewData["invPrdBrCod"],
-                    $this->viewData["invPrdCodInt"],
-                    $this->viewData["invPrdDsc"],
-                    $this->viewData["invPrdTip"],
-                    $this->viewData["invPrdEst"],
-                    null,
-                    1,
-                    $this->viewData["invPrdVnd"],
-                    intval($this->viewData["invPrdId"])
+                $result = Pianos::update(
+                    $this->viewData["pianodsc"],
+                    $this->viewData["pianobio"],
+                    intval($this->viewData["pianosales"]),
+                    $this->viewData["pianoimguri"],
+                    $this->viewData["pianoimgthb"],
+                    floatval($this->viewData["pianoprice"]),
+                    $this->viewData["pianoest"],
+                    intval($this->viewData["pianoid"])
                 );
                 if ($result) {
                     \Utilities\Site::redirectToWithMsg(
-                        "index.php?page=mnt_productos",
-                        "Producto Actualizado Satisfactoriamente"
+                        "index.php?page=mnt_pianos",
+                        "Piano Actualizado Satisfactoriamente"
                     );
                 }
                 break;
             case 'DEL':
-                $result = Productos::delete(
-                    intval($this->viewData["invPrdId"])
+                $result = Pianos::delete(
+                    intval($this->viewData["pianoid"])
                 );
                 if ($result) {
                     \Utilities\Site::redirectToWithMsg(
-                        "index.php?page=mnt_productos",
-                        "Producto Eliminado Satisfactoriamente"
+                        "index.php?page=mnt_pianos",
+                        "Piano Eliminado Satisfactoriamente"
                     );
                 }
                 break;
             }
         }
     }
+
+    private function processView()
+    {
+        if ($this->viewData["mode"] === "INS") {
+            $this->viewData["mode_desc"]  = $this->arrModeDesc["INS"];
+            $this->viewData["btnEnviarText"] = "Guardar Nuevo";
+        } else {
+            $this->viewData["mode_desc"]  = sprintf(
+                $this->arrModeDesc[$this->viewData["mode"]],
+                $this->viewData["pianoid"],
+                $this->viewData["pianodsc"]
+            );
+            $this->viewData["pianoestArr"]
+                = \Utilities\ArrUtils::objectArrToOptionsArray(
+                    $this->arrEstados,
+                    'value',
+                    'text',
+                    'value',
+                    $this->viewData["pianoest"]
+                );
+
+            if ($this->viewData["mode"] === "DSP") {
+                $this->viewData["readonly"] = true;
+                $this->viewData["showBtn"] = false;
+            }
+            if ($this->viewData["mode"] === "DEL") {
+                $this->viewData["readonly"] = true;
+                $this->viewData["btnEnviarText"] = "Eliminar";
+            }
+            if ($this->viewData["mode"] === "UPD") {
+                $this->viewData["btnEnviarText"] = "Actualizar";
+            }
+        }
+        $this->viewData["crsf_token"] = md5(getdate()[0] . $this->name);
+        $_SESSION[$this->name . "crsf_token"] = $this->viewData["crsf_token"];
+    }
+
+
 }
 ?>

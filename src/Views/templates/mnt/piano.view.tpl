@@ -1,6 +1,6 @@
 <h1>{{mode_desc}}</h1>
 <section>
-  <form action="indexpianodsc.php?page=mnt_piano" method="post">
+  <form action="index.php?page=mnt_piano" method="post">
     <input type="hidden" name="mode" value="{{mode}}" />
     <input type="hidden" name="crsf_token" value="{{crsf_token}}" />
     <input type="hidden" name="pianoid" value="{{pinaoid}}" />
@@ -14,7 +14,7 @@
       {{endif error_pianodsc}}
     </fieldset>
     <fieldset>
-      <label for="pianobipianosaleso">Historia</label>
+      <label for="pianobio">Historia</label>
       <input {{if readonly}}readonly{{endif readonly}} type="text" id="pianobio" name="pianobio" placeholder="Historia del piano" value="{{pianobio}}" />
       {{if error_pianobio}}
         {{foreach error_pianobio}}

@@ -14,14 +14,14 @@
         <th>imgThb</th>
         <th>Precio</th>
         <th>Estado</th>
-        <th><a href="index.php?page=Mnt-Piano&mode=INS">Nuevo</a></th>
+        <th><a href="index.php?page=mnt_piano&mode=INS">Nuevo</a></th>
       </tr>
     </thead>
     <tbody>
       {{foreach Pianos}}
       <tr>
         <td>{{pianoid}}</td>
-        <td> <a href="index.php?page=Mnt-Piano&mode=DSP&id={{pianoid}}">{{pianodsc}}</a></td>
+        <td> <a href="index.php?page=mnt_piano&mode=DSP&id={{pianoid}}">{{pianodsc}}</a></td>
         <td>{{pianobio}}</td>
         <td>{{pianosales}}</td>
         <td>{{pianoimguri}}</td>
@@ -30,9 +30,9 @@
         <td>{{pianoest}}</td>
 
         <td>
-          <a href="index.php?page=Mnt-Piano&mode=UPD&id={{invPrdId}}">Editar</a>
+          <a href="index.php?page=mnt_piano&mode=UPD&id={{pianoid}}">Editar</a>
           &NonBreakingSpace;
-          <a href="index.php?page=Mnt-Piano&mode=DEL&id={{invPrdId}}">Eliminar</a>
+          <a href="index.php?page=mnt_piano&mode=DEL&id={{pianoid}}">Eliminar</a>
         </td>
       </tr>
       {{endfor Pianos}}
