@@ -11,61 +11,56 @@ class Pianos extends Table
         return self::obtenerRegistros($sqlstr, array());
     }
 
-    public static function getById(int $invPrdId)
+    public static function getById(int $pianoid)
     {
-        $sqlstr = "SELECT * from `productos` where invPrdId=:invPrdId;";
-        $sqlParams = array("invPrdId" => $invPrdId);
+        $sqlstr = "SELECT * from `pianos` where pianoid=:pianoid;";
+        $sqlParams = array("pianoid" => $pianoid);
         return self::obtenerUnRegistro($sqlstr, $sqlParams);
     }
 
     public static function insert(
-        $invPrdBrCod,
-        $invPrdCodInt,
-        $invPrdDsc,
-        $invPrdTip,
-        $invPrdEst,
-        $invPrdPadre,
-        $invPrdFactor,
-        $invPrdVnd
+        $pianodsc,
+        $pianobio,
+        $pianosales,
+        $pianoimguri,
+        $pianoimgthb,
+        $pianoprice,
+        $pianoest
     ) {
-        $sqlstr = "INSERT INTO `productos`
-(`invPrdBrCod`, `invPrdCodInt`,
-`invPrdDsc`, `invPrdTip`, `invPrdEst`,
-`invPrdPadre`, `invPrdFactor`, `invPrdVnd`)
-VALUES
-(:invPrdBrCod, :invPrdCodInt,
-:invPrdDsc, :invPrdTip, :invPrdEst,
-:invPrdPadre, :invPrdFactor, :invPrdVnd);
-";
+        $sqlstr = "INSERT INTO `nw202202`.`pianos` 
+        (`pianodsc`, `pianobio`, `pianosales`, 
+        `pianoimguri`, `pianoimgthb`, `pianoprice`, 
+        `pianoest`) 
+        VALUES 
+        (:pianodsc, :pianobio, :pianosales,
+        :pianoimguri, :pianoimgthb, :pianoprice, 
+        :pianoest)";
         $sqlParams = [
-            "invPrdBrCod" => $invPrdBrCod ,
-            "invPrdCodInt" => $invPrdCodInt ,
-            "invPrdDsc" => $invPrdDsc ,
-            "invPrdTip" => $invPrdTip ,
-            "invPrdEst" => $invPrdEst ,
-            "invPrdPadre" => $invPrdPadre ,
-            "invPrdFactor" =>  $invPrdFactor ,
-            "invPrdVnd" => $invPrdVnd
+            "pianodsc" => $pianodsc ,
+            "pianobio" => $pianobio ,
+            "pianosales" => $pianosales ,
+            "pianoimguri" => $pianoimguri ,
+            "pianoimgthb" => $pianoimgthb ,
+            "pianoprice" => $pianoprice ,
+            "pianoest" =>  $pianoest
         ];
         return self::executeNonQuery($sqlstr, $sqlParams);
     }
 
     public static function update(
-        $invPrdBrCod,
-        $invPrdCodInt,
-        $invPrdDsc,
-        $invPrdTip,
-        $invPrdEst,
-        $invPrdPadre,
-        $invPrdFactor,
-        $invPrdVnd,
-        $invPrdId
+        $pianodsc,
+        $pianobio,
+        $pianosales,
+        $pianoimguri,
+        $pianoimgthb,
+        $pianoprice,
+        $pianoest
     ) {
-        $sqlstr = "UPDATE `productos` set
+        $sqlstr = "UPDATE `pianos` set
 `invPrdBrCod`=:invPrdBrCod, `invPrdCodInt`=:invPrdCodInt,
 `invPrdDsc`=:invPrdDsc, `invPrdTip`=:invPrdTip, `invPrdEst`=:invPrdEst,
 `invPrdPadre`=:invPrdPadre, `invPrdFactor`=:invPrdFactor, `invPrdVnd`=:invPrdVnd
- where `invPrdId` = :invPrdId;";
+where `invPrdId` = :invPrdId;";
         $sqlParams = array(
             "invPrdBrCod" => $invPrdBrCod,
             "invPrdCodInt" => $invPrdCodInt,
