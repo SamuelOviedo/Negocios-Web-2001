@@ -1,12 +1,12 @@
 CREATE TABLE `pianos` (
-  `pianoid` BIGINT(18) NOT NULL AUTO_INCREMENT,
-  `pianodsc` VARCHAR(60) NULL,
-  `pianobio` VARCHAR(5000) NULL,
-  `pianosales` INT NULL,
-  `pianoimguri` VARCHAR(128) NULL,
-  `pianoimgthb` VARCHAR(128) NULL,
-  `pianoprice` DECIMAL(13,2) NULL,
-  `pianoest` CHAR(3) NULL,
+  `pianoid` BIGINT(18) NOT NULL AUTO_INCREMENT, --codigo autonumerico
+  `pianodsc` VARCHAR(60) NULL, --descripcion del piano
+  `pianobio` VARCHAR(5000) NULL, --resumen/historia del piano
+  `pianosales` INT NULL, --contador de ventas de ese piano
+  `pianoimguri` VARCHAR(128) NULL, --url de la img
+  `pianoimgthb` VARCHAR(128) NULL, --url version pequeña de la anterior
+  `pianoprice` DECIMAL(13,2) NULL, --precio
+  `pianoest` CHAR(3) NULL, --estado
   PRIMARY KEY (`pianoid`));
 
 CREATE TABLE `scores` (

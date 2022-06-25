@@ -41,7 +41,7 @@ class Productos extends PublicController
         $viewData = array();
         $viewData["Productos"] = DaoProductos::getAll();
         error_log(json_encode($viewData));
-      
+
         Renderer::render('mnt/productos', $viewData);
     }
 }
