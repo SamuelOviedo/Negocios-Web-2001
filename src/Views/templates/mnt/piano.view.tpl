@@ -34,20 +34,10 @@
     <fieldset>
       <label for="pianoimguri">Url Img</label>
       <input {{if readonly}}readonly{{endif readonly}} type="text" id="pianoimguri" name="pianoimguri" placeholder="Url imagen piano" value="{{pianoimguri}}" />
-      {{if error_pianoimguri}}
-          {{foreach error_pianoimguri}}
-            <div class="error">{{this}}</div>
-          {{endfor error_pianoimguri}}
-      {{endif error_pianoimguri}}
     </fieldset>
     <fieldset>
       <label for="pianoimgthb">Url Img thb</label>
       <input {{if readonly}}readonly{{endif readonly}} type="text" id="pianoimgthb" name="pianoimgthb" placeholder="Url imagen piano thb" value="{{pianoimgthb}}" />
-      {{if error_pianoimgthb}}
-          {{foreach error_pianoimgthb}}
-            <div class="error">{{this}}</div>
-          {{endfor error_pianoimgthb}}
-      {{endif error_pianoimgthb}}
     </fieldset>
     <fieldset>
       <label for="pianoprice">Precio</label>
