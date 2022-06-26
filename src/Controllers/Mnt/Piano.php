@@ -2,7 +2,6 @@
 namespace Controllers\Mnt;
 
 use Controllers\PublicController;
-use JetBrains\PhpStorm\Pure;
 use Views\Renderer;
 use Utilities\Validators;
 use Dao\Mnt\Pianos;
@@ -63,7 +62,7 @@ class Piano extends PublicController
         $this->viewData["showBtn"] = true;
 
         $this->arrModeDesc = array(
-            "INS"=>"Nuevo Producto",
+            "INS"=>"Nuevo Piano",
             "UPD"=>"Editando %s %s",
             "DSP"=>"Detalle de %s %s",
             "DEL"=>"Eliminado %s %s"
@@ -172,17 +171,18 @@ class Piano extends PublicController
                     );
                 }
                 break;
-            case 'DEL':
-                $result = Pianos::delete(
-                    intval($this->viewData["pianoid"])
-                );
-                if ($result) {
-                    \Utilities\Site::redirectToWithMsg(
-                        "index.php?page=mnt_pianos",
-                        "Piano Eliminado Satisfactoriamente"
+                case 'DEL':
+                    $result = Pianos::delete(
+                        intval($this->viewData["pianoid"])
                     );
-                }
-                break;
+                    if ($result) {
+                        \Utilities\Site::redirectToWithMsg(
+                            "index.php?page=mnt_pianos",
+                            "Piano Eliminado Satisfactoriamente"
+                        );
+                    }
+                    break;
+    
             }
         }
     }

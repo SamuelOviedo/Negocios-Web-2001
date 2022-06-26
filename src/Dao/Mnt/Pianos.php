@@ -27,7 +27,7 @@ class Pianos extends Table
         $pianoprice,
         $pianoest
     ) {
-        $sqlstr = "INSERT INTO `nw202202`.`pianos` 
+        $sqlstr = "INSERT INTO `pianos` 
         (`pianodsc`, `pianobio`, `pianosales`, 
         `pianoimguri`, `pianoimgthb`, `pianoprice`, 
         `pianoest`) 
@@ -57,12 +57,12 @@ class Pianos extends Table
         $pianoest,
         $pianoid
     ) {
-        $sqlstr = "UPDATE `nw202202`.`pianos` SET 
+        $sqlstr = "UPDATE `pianos` SET 
         `pianodsc` = :pianodsc, `pianobio` = :pianobio, 
         `pianosales` = :pianosales, `pianoimguri` = :pianoimguri, 
         `pianoimgthb` = :pianoimgthb, `pianoprice` = :pianoprice, 
         `pianoest` = :pianoest
-        WHERE (`pianoid` = :pianoid);";
+        WHERE `pianoid` = :pianoid;";
         $sqlParams = [
             "pianodsc" => $pianodsc ,
             "pianobio" => $pianobio ,
